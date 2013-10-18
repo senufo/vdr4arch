@@ -1,7 +1,7 @@
 # Maintainer: Senufo
 pkgname=vdr
 pkgver=2.0.3
-pkgrel=3
+pkgrel=6
 pkgdesc="'open' digital satellite receiver and timer controlled video disk recorder"
 url="http://tvdr.de/"
 arch=('x86_64' 'i686')
@@ -20,12 +20,10 @@ backup=('var/lib/vdr/channels.conf'
 options='!emptydirs'
 install='vdr.install'
 source=("ftp://ftp.tvdr.de/vdr/${pkgname}-${pkgver}.tar.bz2"
-        'vdr-loglevel-fix.diff::http://www.vdr-portal.de/index.php?page=Attachment&attachmentID=33745'
         'shutdown.sh'
         'shutdown-wrapper.c'
 	'vdr-2.0.2-pin.diff')
 md5sums=('dd8fb1642bdfa7feb0e9a8ae41e9ef2f'
-         '6877c9efd84261c4a0471e657edce52d'
          'fb1f52d7decba2df9c5d00c70040984a'
          '7cad811b4ac5ee6c0b5496d006f1e0ee'
 	 '7ba18be075f1e1c4e48d9186efbab963')
@@ -34,14 +32,26 @@ prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
 cat > Make.config <<EOF
-CFLAGS      += -O3
-CXXFLAGS    += -O3
-PREFIX       = /usr
-LIBDIR       = /usr/lib/vdr/plugins
+CC       = gcc
+CFLAGS   = -g -O3 -Wall
+CXX      = g++
+CXXFLAGS = -g -O3 -Wall -Werror=overloaded-virtual -Wno-parentheses
+PREFIX    = /usr
+BINDIR    = /usr/bin
+INCDIR    = /usr/include
+LIBDIR    = /usr/lib/vdr/plugins
+LOCDIR    = /usr/share/locale
+MANDIR    = /usr/share/man
+PCDIR     = /usr/lib/pkgconfig
+RESDIR    = /usr/share/vdr
 VDR_USER     = vdr
+### Fallback for plugins with old makefiles:
+ifdef PLUGIN
+CFLAGS   += -fPIC
+CXXFLAGS += -fPIC
+endif
 EOF
 
-  patch -p1 -i "$srcdir/vdr-loglevel-fix.diff"
   patch -p0 -i "$srcdir/vdr-2.0.2-pin.diff"
 }
 
