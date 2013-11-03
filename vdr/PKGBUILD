@@ -32,10 +32,6 @@ prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
 cat > Make.config <<EOF
-CC       = gcc
-CFLAGS   = -g -O3 -Wall
-CXX      = g++
-CXXFLAGS = -g -O3 -Wall -Werror=overloaded-virtual -Wno-parentheses
 PREFIX    = /usr
 BINDIR    = /usr/bin
 INCDIR    = /usr/include
@@ -44,6 +40,10 @@ LOCDIR    = /usr/share/locale
 MANDIR    = /usr/share/man
 PCDIR     = /usr/lib/pkgconfig
 RESDIR    = /usr/share/vdr
+VIDEODIR  = /srv/vdr/video
+CONFDIR   = /var/lib/vdr
+CACHEDIR  = /var/cache/vdr
+
 VDR_USER     = vdr
 ### Fallback for plugins with old makefiles:
 ifdef PLUGIN
