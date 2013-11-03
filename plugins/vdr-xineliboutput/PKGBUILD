@@ -1,9 +1,9 @@
 # Maintainer: Christopher Reimer <vdr4arch[at]creimer[dot]net>
 pkgname=vdr-xineliboutput
-pkgver=1.1.0
-_gitver=32bde0a1eb887de10e460fe12c32251b6a7f1114
+pkgver=1.1.0.11.gab8cf79
+_gitver=ab8cf79be9a61820fca1e0d3efa9774b848cbc1d
 _vdrapi=2.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc="X11 and Linux framebuffer front-end for VDR"
 url="http://www.sourceforge.net/projects/xineliboutput"
 arch=('x86_64' 'i686')
@@ -13,22 +13,25 @@ optdepends=('nvidia: Required for VDPAU decoding'
             'xorg-server: Required for software decoding')
 makedepends=('git')
 _plugname=$(echo $pkgname | sed 's/vdr-//g')
-source=("git://projects.vdr-developer.org/$_plugname.git#commit=$_gitver")
-md5sums=('SKIP')
+source=("git://projects.vdr-developer.org/$_plugname.git#commit=$_gitver"
+	'fr_FR.po')
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "${srcdir}/${_plugname}"
   git describe --tags | sed "s/$_plugname.//g;s/_/./g;s/-/./g"
 }
 
+build() {
+  cp "fr_FR.po" "${srcdir}/${_plugname}/xineliboutput/po/"
+  cd "${srcdir}/${_plugname}"
+  make
+}
+
 package() {
   cd "${srcdir}/${_plugname}"
-
-  make CFLAGS="$(pkg-config vdr --variable=cflags)" \
-       CXXFLAGS="$(pkg-config vdr --variable=cxxflags)" \
-       VDRDIR="/usr/include/vdr" \
-       LIBDIR="$(pkg-config vdr --variable=libdir)" \
-       LOCALEDIR="$pkgdir/$(pkg-config vdr --variable=locdir)" \
-       DESTDIR="$pkgdir" \
-       install
+  echo "=> ${srcdir}/${_plugname}"
+  echo "==> DESTDIR=$pkgdir"
+  mkdir -p "$pkgdir/usr/lib/vdr/plugins"
+  make DESTDIR="$pkgdir" install
 }
