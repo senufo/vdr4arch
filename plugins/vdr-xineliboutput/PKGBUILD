@@ -23,7 +23,7 @@ pkgver() {
 }
 
 build() {
-  cp "fr_FR.po" "${srcdir}/${_plugname}/xineliboutput/po/"
+  cp "fr_FR.po" "${srcdir}/${_plugname}/po/"
   cd "${srcdir}/${_plugname}"
   make
 }
