@@ -5,20 +5,20 @@ post_install() {
 
   #Create cachedir
   mkdir -p var/cache/vdr
-  chown -R vdr:vdr var/cache/vdr
+  chown -R henri:users var/cache/vdr
 
   #Create shutdown-hooks dir
   mkdir -p usr/share/vdr/shutdown-hooks
 
   #Create videodir
   mkdir -p srv/vdr/video
-  chown -R vdr:vdr srv/vdr
+  chown -R henri:users srv/vdr
 
   post_upgrade
 }
 
 post_upgrade() {
-  chown -R vdr:vdr var/lib/vdr
+  chown -R henri:users var/lib/vdr
 
   mkdir -p usr/share/vdr/shutdown-hooks
 
