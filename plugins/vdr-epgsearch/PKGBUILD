@@ -3,7 +3,7 @@ pkgname=vdr-epgsearch
 pkgver=1.0.1.beta5
 _vdrapi=2.0.0
 epoch=1
-pkgrel=3
+pkgrel=6
 pkgdesc="Searchtimer and replacement of the VDR program menu"
 url="http://winni.vdr-developer.org/epgsearch"
 arch=('x86_64' 'i686')
@@ -26,6 +26,10 @@ md5sums=('6e63cc29df02f48fabf6e12e1e71b2fc')
 
 prepare() {
   sed -i 's/^Menu/# Menu/g' "${srcdir}/${_plugname}-${pkgver}"/conf/epgsearchmenu.conf
+  sed -i 's/#USE_PINPLUGIN = 1/USE_PINPLUGIN = 1/g' "${srcdir}/${_plugname}-${pkgver}"/Makefile
+  sed -i 's/AUTOCONFIG=1/AUTOCONFIG=0/' "${srcdir}/${_plugname}-${pkgver}"/Makefile
+  sed -i 's/#REGEXLIB = pcre/REGEXLIB = pcre/' "${srcdir}/${_plugname}-${pkgver}"/Makefile
+
 }
 
 build() {
