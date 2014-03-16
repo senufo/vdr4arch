@@ -2,7 +2,7 @@
 pkgname=vdr-skinflat
 pkgver=0.1.1
 _vdrapi=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple and slim skin for VDR"
 url="http://projects.vdr-developer.org/projects/plg-skinflat"
 arch=('x86_64' 'i686')
@@ -11,12 +11,19 @@ depends=('imagemagick' 'libpng' "vdr-api=${_vdrapi}")
 # libpng because we need imagemagick with libpng support. libpng is only an optdepend of imagemagick
 install="$pkgname.install"
 _plugname=$(echo $pkgname | sed 's/vdr-//g')
-source=("http://projects.vdr-developer.org/attachments/download/1476/$_plugname-$pkgver.tar.gz")
-md5sums=('1c54a17cdb9f56608dce815bc87e72da')
+source=("http://projects.vdr-developer.org/attachments/download/1476/$_plugname-$pkgver.tar.gz"
+	'truecolor.diff')
+md5sums=('1c54a17cdb9f56608dce815bc87e72da'
+	 'SKIP')
 
 build() {
   cd "${srcdir}/$_plugname-$pkgver"
   make
+}
+
+prepare() {
+  cd "${srcdir}/$_plugname-$pkgver"
+  patch -p0 -i "$srcdir/truecolor.diff"
 }
 
 package() {
