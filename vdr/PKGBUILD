@@ -1,7 +1,7 @@
 # Maintainer: Senufo
 pkgname=vdr
 pkgver=2.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="'open' digital satellite receiver and timer controlled video disk recorder, pin patch, epgsearch patch"
 url="http://tvdr.de/"
 arch=('x86_64' 'i686')
@@ -25,15 +25,17 @@ source=("ftp://ftp.tvdr.de/vdr/${pkgname}-${pkgver}.tar.bz2"
 	'vdr-2.0.2-pin.diff'
         'jumpseconds.patch'
 	'MainMenuHooks-v1_0_2.diff'
-	'vdr-loglevel-fix.diff')
+	'vdr-loglevel-fix.diff'
+	'timercmd-0.1_1.7.17.diff')
 
 md5sums=('f58b9836a60440fde84480a2e37ee91d'
          'fb1f52d7decba2df9c5d00c70040984a'
          '7cad811b4ac5ee6c0b5496d006f1e0ee'
 	 '7ba18be075f1e1c4e48d9186efbab963'
          '386ca0cd63e6620f241d9c7de397df79'
-	 'SKIP'
-	 'SKIP')
+	 '301c9b9766ed5182b07f1debc79abc21'
+	 '6877c9efd84261c4a0471e657edce52d'
+	 'a05b21b927ab6d49f237483b69add770')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -64,7 +66,7 @@ EOF
   patch -p0 -i "$srcdir/vdr-2.0.2-pin.diff"
   patch -p1 -i "$srcdir/jumpseconds.patch"
   patch -p1 -i "$srcdir/MainMenuHooks-v1_0_2.diff"
-
+  patch -p1 -i "$srcdir/timercmd-0.1_1.7.17.diff"
 }
 
 build() {
