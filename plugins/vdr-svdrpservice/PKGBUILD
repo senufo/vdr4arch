@@ -2,7 +2,7 @@
 pkgname=vdr-svdrpservice
 pkgver=1.0.0
 _vdrapi=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Offers SVDRP connections as a service to other plugins"
 url="http://vdr.schmirler.de/"
 arch=('x86_64' 'i686')
