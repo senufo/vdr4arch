@@ -1,11 +1,17 @@
---- skinflatplus.c.orig	2014-03-16 16:44:12.797920837 +0100
-+++ skinflatplus.c	2014-03-16 16:44:46.919593896 +0100
-@@ -83,7 +83,7 @@
+--- skinflatplus.c.orig	2014-03-19 15:58:18.468626577 +0100
++++ skinflatplus.c	2014-03-19 16:01:01.984064840 +0100
+@@ -82,12 +82,13 @@
+ }
+ 
  bool cPluginFlat::Start(void) {
++#ifdef TEST_TRUE_COLOR
      if (!cOsdProvider::SupportsTrueColor()) {
-         esyslog("skinflat: No TrueColor OSD found! Aborting!");
--        return false;
-+	//return false; remove test truecolor OSD
+         esyslog("skinflatplus: No TrueColor OSD found! Aborting!");
+         return false;
      } else
-         dsyslog("skinflat: TrueColor OSD found");
-     flat = new cFlat;
+         dsyslog("skinflatplus: TrueColor OSD found");
+-    
++#endif    
+     imgCache.Create();
+     imgCache.PreLoadImage();
+ 
