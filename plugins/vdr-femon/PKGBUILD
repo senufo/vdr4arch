@@ -1,6 +1,6 @@
 # Maintainer: Christopher Reimer <vdr4arch[at]creimer[dot]net>
 pkgname=vdr-femon
-pkgver=2.0.2
+pkgver=2.0.4
 _vdrapi=2.0.0
 pkgrel=1
 pkgdesc="DVB Frontend Status Monitor plugin"
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=$(echo $pkgname | sed 's/vdr-//g')
 source=("http://www.saunalahti.fi/~rahrenbe/vdr/femon/files/$pkgname-$pkgver.tgz")
-md5sums=('f76847d9e2c39d30038114f05b5b6e15')
+md5sums=('d9f7c8348314ea24181f387998e43f18')
 
 build() {
   cd "${srcdir}/${_plugname}-${pkgver}"
