@@ -1,7 +1,7 @@
 # Maintainer: Senufo
 pkgname=vdr
 pkgver=2.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="'open' digital satellite receiver and timer controlled video disk recorder, pin patch, epgsearch patch"
 url="http://tvdr.de/"
 arch=('x86_64' 'i686')
@@ -33,7 +33,7 @@ source=("ftp://ftp.tvdr.de/vdr/${pkgname}-${pkgver}.tar.bz2"
 md5sums=('f6916524c302f3209fd0af507ab97387'
          'fb1f52d7decba2df9c5d00c70040984a'
          '7cad811b4ac5ee6c0b5496d006f1e0ee'
-	 '7ba18be075f1e1c4e48d9186efbab963'
+	 'SKIP'
          '386ca0cd63e6620f241d9c7de397df79'
 	 '301c9b9766ed5182b07f1debc79abc21'
 	 '6877c9efd84261c4a0471e657edce52d'
