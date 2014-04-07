@@ -1,15 +1,19 @@
---- src/vdr-plugin-pin/po/fr_FR.po	2014-03-24 10:37:15.466917266 +0100
-+++ fr_FR_correction.po	2014-03-28 15:57:37.745422695 +0100
-@@ -20,7 +20,7 @@
+--- src/vdr-plugin-pin/po/fr_FR.po	2014-03-28 21:59:02.950100661 +0100
++++ fr_FR_correction.po	2014-03-28 22:03:59.245781071 +0100
+@@ -19,8 +19,11 @@
+ "Content-Type: text/plain; charset=ISO-8859-1\n"
  "Content-Transfer-Encoding: 8bit\n"
  
++msgid "Childlock"
++msgstr "Contrôle Parental"
++
  msgid "Setup"
 -msgstr ""
 +msgstr "Configuration"
  
  msgid "Add current channel to protection list"
  msgstr "Ajouter la chaîne actuelle à la protection parentale"
-@@ -35,22 +35,22 @@
+@@ -35,22 +38,22 @@
  msgstr "Editer les émissions protégés"
  
  msgid "Edit plugin locks"
@@ -30,7 +34,7 @@
  
  msgid "Activate childlock"
 -msgstr "Protection parentales activée"
-+msgstr "Protection parentale activée"
++msgstr "Activer la protection parentale"
  
  msgid "Activated pin protection"
 -msgstr "Activé la protection parentale"
@@ -38,7 +42,7 @@
  
  msgid "Please setup a pin code first!"
  msgstr "Entrer le code de protection d'abord!"
-@@ -65,7 +65,7 @@
+@@ -65,7 +68,7 @@
  msgstr "Plugin sous protection"
  
  msgid "Menu protections"
@@ -47,7 +51,7 @@
  
  msgid "locked"
  msgstr "protégé"
-@@ -95,7 +95,7 @@
+@@ -95,7 +98,7 @@
  msgstr "Enlever?"
  
  msgid "Name"
@@ -56,7 +60,7 @@
  
  msgid "Lock active"
  msgstr "Protection active"
-@@ -104,13 +104,13 @@
+@@ -104,13 +107,13 @@
  msgstr "Expression de recherche"
  
  msgid "Search mode"
@@ -73,7 +77,7 @@
  
  msgid "Setup your pin code: "
  msgstr "Introduisez le code d'accès:"
-@@ -128,13 +128,13 @@
+@@ -128,13 +131,13 @@
  msgstr "Le code est faux!"
  
  msgid "Please enter pin code first"
@@ -90,7 +94,7 @@
  
  msgid "broadcast is protected"
  msgstr "Emission protégée"
-@@ -146,7 +146,7 @@
+@@ -146,7 +149,7 @@
  msgstr ""
  
  msgid "Skip protected channel silent"
@@ -99,7 +103,7 @@
  
  msgid "Hide protected menus"
  msgstr "Menu protégés sont invisibles"
-@@ -158,16 +158,16 @@
+@@ -158,16 +161,16 @@
  msgstr "Enregistrements protégés sont invisibles"
  
  msgid "Open menu after pin request"
