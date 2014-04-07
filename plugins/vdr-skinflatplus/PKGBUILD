@@ -2,7 +2,7 @@
 pkgname=vdr-skinflatplus
 pkgver=0.2.1_a821a54d_git
 _vdrapi=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and slim skin for VDR, git version"
 url="http://projects.vdr-developer.org/projects/plg-skinflat"
 arch=('x86_64' 'i686')
@@ -13,8 +13,12 @@ install="$pkgname.install"
 _plugname=$(echo $pkgname | sed 's/vdr-//g')
 source=("git://projects.vdr-developer.org/skin-flatplus.git"
 	'truecolor.diff'
-	'error_osd.diff')
+	'error_osd.diff'
+	'skip_test.diff'
+	'first_display_false.diff')
 md5sums=('SKIP'
+	 'SKIP'
+	 'SKIP'
 	 'SKIP'
 	 'SKIP')
 
@@ -25,8 +29,10 @@ build() {
 
 prepare() {
   cd "${srcdir}/skin-flatplus"
-  patch -p0 -i "$srcdir/truecolor.diff"
+  #patch -p0 -i "$srcdir/truecolor.diff"
   #patch -p0 -i "$srcdir/error_osd.diff"
+  patch -p1 -i "$srcdir/skip_test.diff"
+  patch -p2 -i "$srcdir/first_display_false.diff"
 }
 package() {
   cd "${srcdir}/skin-flatplus"
