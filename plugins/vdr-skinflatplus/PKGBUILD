@@ -13,11 +13,9 @@ install="$pkgname.install"
 _plugname=$(echo $pkgname | sed 's/vdr-//g')
 source=("git://projects.vdr-developer.org/skin-flatplus.git"
 	'truecolor.diff'
-	'error_osd.diff'
 	'skip_test.diff'
 	'first_display_false.diff')
 md5sums=('SKIP'
-	 'SKIP'
 	 'SKIP'
 	 'SKIP'
 	 'SKIP')
